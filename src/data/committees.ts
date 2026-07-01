@@ -1,6 +1,6 @@
 export const committees = {
   organizing: [
-    { name: 'Dr. Wei-Lin Huang', role: 'General Chair', affiliation: 'NTUST, Taiwan' },
+    { name: 'Dr. Wei-Lin', role: 'General Chair', affiliation: 'NTUST, Taiwan' },
     { name: 'Prof. Michael Anderson', role: 'Program Chair', affiliation: 'MIT, USA' },
     { name: 'Dr. Sarah Kim', role: 'Publication Chair', affiliation: 'KAIST, South Korea' },
     { name: 'Prof. Raj Patel', role: 'Finance Chair', affiliation: 'IIT Bombay, India' },

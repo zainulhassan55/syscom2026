@@ -13,7 +13,7 @@ import { Contact } from './pages/Contact'
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/syscom2026">
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, MapPin, Phone, Send, CheckCircle } from 'lucide-react'
+import { Mail, MapPin, Send, CheckCircle } from 'lucide-react'
 import { PageHeader } from '../components/ui/PageHeader'
 import { AnimatedSection } from '../components/ui/AnimatedSection'
 import { conference } from '../data/conference'
@@ -18,23 +18,31 @@ export function Contact() {
       <PageHeader
         badge="Get in Touch"
         title="Contact Us"
-        subtitle="Have questions? Reach out to the SysCom 2026 organizing committee."
+        subtitle="Reach out to the SysCom 2026 organizing committee."
       />
 
       <AnimatedSection className="py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-2">
             <div>
-              <h2 className="font-display text-2xl font-bold text-slate-900">Conference Secretariat</h2>
-              <p className="mt-4 text-slate-600 leading-relaxed">
-                For inquiries regarding paper submission, registration, sponsorship, or general information,
-                please contact us using the form or details below.
-              </p>
+              <div className="card-elevated rounded-2xl border-l-4 border-l-gold-500 p-8">
+                <h2 className="font-display text-xl font-bold text-brand-900">Paper Submissions</h2>
+                <p className="mt-3 text-slate-600 leading-relaxed">
+                  All questions about submissions should e-mail to:
+                </p>
+                <a
+                  href={`mailto:${conference.submissionEmail}`}
+                  className="mt-4 inline-flex items-center gap-2 text-lg font-semibold text-brand-700 transition hover:text-gold-600"
+                >
+                  <Mail className="h-5 w-5" />
+                  {conference.submissionEmail}
+                </a>
+              </div>
 
               <div className="mt-8 space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-100">
-                    <MapPin className="h-5 w-5 text-primary-600" />
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-50">
+                    <MapPin className="h-5 w-5 text-brand-700" />
                   </div>
                   <div>
                     <p className="font-medium text-slate-900">{conference.venue}</p>
@@ -42,18 +50,15 @@ export function Contact() {
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-100">
-                    <Mail className="h-5 w-5 text-primary-600" />
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-50">
+                    <Mail className="h-5 w-5 text-brand-700" />
                   </div>
-                  <a href={`mailto:${conference.email}`} className="text-slate-600 hover:text-primary-600">
+                  <a
+                    href={`mailto:${conference.email}`}
+                    className="text-slate-600 transition hover:text-brand-700"
+                  >
                     {conference.email}
                   </a>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-100">
-                    <Phone className="h-5 w-5 text-primary-600" />
-                  </div>
-                  <span className="text-slate-600">{conference.phone}</span>
                 </div>
               </div>
 
@@ -79,13 +84,13 @@ export function Contact() {
                   <p className="mt-2 text-emerald-700">We will get back to you within 2 business days.</p>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+                <form onSubmit={handleSubmit} className="card-elevated space-y-5 rounded-2xl p-8">
                   <div>
                     <label className="mb-2 block text-sm font-medium text-slate-700">Full Name</label>
                     <input
                       required
                       type="text"
-                      className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 focus:outline-none"
+                      className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:outline-none"
                     />
                   </div>
                   <div>
@@ -93,7 +98,7 @@ export function Contact() {
                     <input
                       required
                       type="email"
-                      className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 focus:outline-none"
+                      className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:outline-none"
                     />
                   </div>
                   <div>
@@ -101,7 +106,7 @@ export function Contact() {
                     <input
                       required
                       type="text"
-                      className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 focus:outline-none"
+                      className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:outline-none"
                     />
                   </div>
                   <div>
@@ -109,12 +114,12 @@ export function Contact() {
                     <textarea
                       required
                       rows={5}
-                      className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 focus:outline-none"
+                      className="w-full rounded-xl border border-slate-200 px-4 py-3 focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:outline-none"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-linear-to-r from-primary-500 to-accent-500 py-3.5 font-semibold text-white transition hover:brightness-110"
+                    className="btn-gold flex w-full items-center justify-center gap-2 rounded-xl py-3.5"
                   >
                     <Send className="h-5 w-5" />
                     Send Message

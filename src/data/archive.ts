@@ -2,27 +2,26 @@ export const archiveEditions = {
   '2nd': {
     title: "SysCom's 2nd Edition",
     year: 2025,
-    location: 'Seoul, South Korea',
-    dates: 'December 12–13, 2025',
-    theme: 'Smart Systems for Sustainable Future',
-    stats: { papers: 156, attendees: 320, countries: 28 },
-    highlights: [
-      'Keynote by Dr. Yuki Tanaka on federated learning',
-      'Best Paper: "Secure Edge Orchestration in IoT Networks"',
-      '12 technical tracks with 45 sessions',
-    ],
+    subtitle: 'Smart Systems and Advanced Computing — Proceedings',
+    proceedingsUrl: 'https://link.springer.com/book/10.1007/978-3-031-40905-9',
+    proceedingsLabel: 'View on Springer Link',
   },
   '1st': {
     title: "SysCom's 1st Edition",
     year: 2024,
-    location: 'Bangkok, Thailand',
-    dates: 'November 8–9, 2024',
-    theme: 'Foundations of Smart Computing',
-    stats: { papers: 98, attendees: 210, countries: 19 },
-    highlights: [
-      'Inaugural conference launch',
-      'Keynote by Prof. Lin Wei on smart manufacturing',
-      'Best Paper: "Lightweight Crypto for Resource-Constrained Devices"',
-    ],
+    subtitle: 'Smart Systems and Advanced Computing — CEUR Workshop Proceedings',
+    proceedingsUrl: 'https://ceur-ws.org/Vol-3080/',
+    proceedingsLabel: 'View on CEUR-WS',
   },
 }
+
+export const archiveLinks = [
+  {
+    label: "SysCom's 2nd Edition",
+    href: 'https://link.springer.com/book/10.1007/978-3-031-40905-9',
+  },
+  {
+    label: "SysCom's 1st Edition",
+    href: 'https://ceur-ws.org/Vol-3080/',
+  },
+]

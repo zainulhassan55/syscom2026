@@ -2,6 +2,10 @@ import { Link, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ChevronDown } from 'lucide-react'
+import { archiveLinks } from '../../data/archive'
+
+type DropdownChild = { label: string; path?: string; href?: string }
+type DropdownItem = { label: string; path?: string; children?: DropdownChild[] }
 
 const mainLinks = [
   { label: 'Home', path: '/' },
@@ -17,14 +21,15 @@ const papersDropdown = [
   { label: 'Paper Registration', path: '/paper-registration' },
 ]
 
-const moreDropdown = [
+const moreDropdown: DropdownItem[] = [
   { label: 'Committees', path: '/committees' },
   {
     label: 'Archive',
-    children: [
-      { label: "SysCom's 2nd Edition", path: '/archive/2nd-edition' },
-      { label: "SysCom's 1st Edition", path: '/archive/1st-edition' },
-    ],
+    children: archiveLinks.map((link) => ({
+      label: link.label,
+      href: link.href,
+      path: link.label.includes('2nd') ? '/archive/2nd-edition' : '/archive/1st-edition',
+    })),
   },
 ]
 
@@ -36,7 +41,7 @@ function NavDropdown({
   onClose,
 }: {
   label: string
-  items: Array<{ label: string; path?: string; children?: Array<{ label: string; path: string }> }>
+  items: DropdownItem[]
   mobile?: boolean
   dark?: boolean
   onClose?: () => void
@@ -81,16 +86,29 @@ function NavDropdown({
                       <ChevronDown className={`h-3 w-3 transition ${archiveOpen ? 'rotate-180' : ''}`} />
                     </button>
                     {archiveOpen &&
-                      item.children.map((child) => (
-                        <Link
-                          key={child.path}
-                          to={child.path}
-                          onClick={onClose}
-                          className="block py-2 pl-3 text-sm text-slate-500 hover:text-brand-600"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
+                      item.children.map((child) =>
+                        child.href ? (
+                          <a
+                            key={child.href}
+                            href={child.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={onClose}
+                            className="block py-2 pl-3 text-sm text-slate-500 hover:text-brand-600"
+                          >
+                            {child.label}
+                          </a>
+                        ) : (
+                          <Link
+                            key={child.path}
+                            to={child.path!}
+                            onClick={onClose}
+                            className="block py-2 pl-3 text-sm text-slate-500 hover:text-brand-600"
+                          >
+                            {child.label}
+                          </Link>
+                        ),
+                      )}
                   </div>
                 ) : (
                   <Link
@@ -148,15 +166,27 @@ function NavDropdown({
                         exit={{ opacity: 0, x: -8 }}
                         className="absolute top-0 left-full ml-1 min-w-[200px] rounded-xl border border-slate-100 bg-white py-2 shadow-xl"
                       >
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.path}
-                            to={child.path}
-                            className={`block px-4 py-2.5 text-sm text-slate-600 ${itemHover}`}
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
+                        {item.children.map((child) =>
+                          child.href ? (
+                            <a
+                              key={child.href}
+                              href={child.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className={`block px-4 py-2.5 text-sm text-slate-600 ${itemHover}`}
+                            >
+                              {child.label}
+                            </a>
+                          ) : (
+                            <Link
+                              key={child.path}
+                              to={child.path!}
+                              className={`block px-4 py-2.5 text-sm text-slate-600 ${itemHover}`}
+                            >
+                              {child.label}
+                            </Link>
+                          ),
+                        )}
                       </motion.div>
                     )}
                   </AnimatePresence>

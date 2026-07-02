@@ -52,14 +52,20 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               {[
                 ['Committees', '/committees'],
-                ['SysCom 2025', '/archive/2nd-edition'],
-                ['SysCom 2024', '/archive/1st-edition'],
+                ['SysCom 2025 (2nd Edition)', 'https://link.springer.com/book/10.1007/978-3-031-40905-9'],
+                ['SysCom 2024 (1st Edition)', 'https://ceur-ws.org/Vol-3080/'],
                 ['Contact Us', '/contact'],
               ].map(([label, path]) => (
                 <li key={path}>
-                  <Link to={path} className="transition hover:text-gold-400">
-                    {label}
-                  </Link>
+                  {path.startsWith('http') ? (
+                    <a href={path} target="_blank" rel="noopener noreferrer" className="transition hover:text-gold-400">
+                      {label}
+                    </a>
+                  ) : (
+                    <Link to={path} className="transition hover:text-gold-400">
+                      {label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

@@ -1,90 +1,88 @@
 import { motion } from 'framer-motion'
-import { Check } from 'lucide-react'
+import { MapPin, Globe2, GraduationCap, User } from 'lucide-react'
 import { PageHeader } from '../components/ui/PageHeader'
 import { AnimatedSection, StaggerContainer, StaggerItem } from '../components/ui/AnimatedSection'
+import { registrationFees } from '../data/registration'
 
-const plans = [
-  {
-    name: 'Student',
-    early: '$150',
-    regular: '$200',
-    features: ['Conference access', 'Proceedings', 'Lunch & refreshments', 'Certificate of attendance'],
+const regionConfig = {
+  local: {
+    icon: MapPin,
+    label: 'Local Authors',
+    accent: 'border-brand-200 bg-brand-50',
+    badge: 'bg-brand-700 text-white',
   },
-  {
-    name: 'Academic',
-    early: '$250',
-    regular: '$350',
-    features: ['All student benefits', 'Workshop access', 'Networking dinner', 'Presentation slot (if author)'],
-    popular: true,
+  international: {
+    icon: Globe2,
+    label: 'International Authors',
+    accent: 'border-gold-200 bg-gold-50/50',
+    badge: 'bg-gold-500 text-brand-950',
   },
-  {
-    name: 'Industry',
-    early: '$400',
-    regular: '$500',
-    features: ['All academic benefits', 'Exhibition access', 'VIP seating', 'Company logo in proceedings'],
-  },
-]
+}
 
 export function PaperRegistration() {
+  const localFees = registrationFees.filter((f) => f.region === 'local')
+  const intlFees = registrationFees.filter((f) => f.region === 'international')
+
   return (
     <>
       <PageHeader
         badge="Register"
         title="Paper Registration"
-        subtitle="Register to attend SysCom 2026 and present your accepted paper."
+        subtitle="Registration fees for authors presenting at SysCom 2026."
       />
 
-      <AnimatedSection className="py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <StaggerContainer className="grid gap-8 md:grid-cols-3">
-            {plans.map((plan) => (
-              <StaggerItem key={plan.name}>
-                <motion.div
-                  whileHover={{ y: -6 }}
-                  className={`relative rounded-2xl border p-8 ${
-                    plan.popular
-                      ? 'border-primary-300 bg-linear-to-br from-primary-50 to-white shadow-xl shadow-primary-500/10'
-                      : 'border-slate-100 bg-white shadow-sm'
-                  }`}
-                >
-                  {plan.popular && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary-500 px-4 py-1 text-xs font-semibold text-white">
-                      Most Popular
-                    </span>
-                  )}
-                  <h3 className="font-display text-xl font-bold text-slate-900">{plan.name}</h3>
-                  <div className="mt-4">
-                    <p className="text-sm text-slate-500">Early Bird</p>
-                    <p className="font-display text-3xl font-bold text-primary-600">{plan.early}</p>
-                    <p className="mt-1 text-sm text-slate-400">Regular: {plan.regular}</p>
+      <AnimatedSection className="bg-surface py-16 md:py-24">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <StaggerContainer className="grid gap-10 md:grid-cols-2">
+            {(['local', 'international'] as const).map((region) => {
+              const config = regionConfig[region]
+              const fees = region === 'local' ? localFees : intlFees
+              const Icon = config.icon
+
+              return (
+                <StaggerItem key={region}>
+                  <div className={`card-elevated overflow-hidden rounded-2xl border-2 ${config.accent}`}>
+                    <div className={`flex items-center gap-3 px-6 py-5 ${region === 'local' ? 'bg-brand-800' : 'bg-brand-900'}`}>
+                      <Icon className="h-6 w-6 text-gold-400" />
+                      <h3 className="font-display text-xl font-bold text-white">{config.label}</h3>
+                    </div>
+
+                    <div className="divide-y divide-slate-100">
+                      {fees.map((fee) => (
+                        <motion.div
+                          key={`${fee.category}-${fee.type}`}
+                          whileHover={{ backgroundColor: 'rgba(248,250,252,0.8)' }}
+                          className="flex items-center justify-between gap-4 px-6 py-6"
+                        >
+                          <div className="flex items-center gap-3">
+                            {fee.type === 'Students' ? (
+                              <GraduationCap className="h-5 w-5 text-brand-600" />
+                            ) : (
+                              <User className="h-5 w-5 text-brand-600" />
+                            )}
+                            <span className="font-medium text-slate-700">{fee.type}</span>
+                          </div>
+                          <div className="text-right">
+                            <p className="font-display text-2xl font-bold text-brand-900">
+                              {fee.amount}
+                              <span className="ml-1.5 text-base font-semibold text-gold-600">
+                                {fee.currency}
+                              </span>
+                            </p>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
                   </div>
-                  <ul className="mt-6 space-y-3">
-                    {plan.features.map((f) => (
-                      <li key={f} className="flex items-center gap-2 text-sm text-slate-600">
-                        <Check className="h-4 w-4 shrink-0 text-primary-500" />
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
-                  <button
-                    type="button"
-                    className={`mt-8 w-full rounded-xl py-3 font-semibold transition ${
-                      plan.popular
-                        ? 'bg-linear-to-r from-primary-500 to-accent-500 text-white hover:brightness-110'
-                        : 'border border-slate-200 text-slate-700 hover:border-primary-300 hover:text-primary-700'
-                    }`}
-                  >
-                    Register Now
-                  </button>
-                </motion.div>
-              </StaggerItem>
-            ))}
+                </StaggerItem>
+              )
+            })}
           </StaggerContainer>
 
-          <div className="mt-12 rounded-2xl border border-slate-200 bg-slate-50 p-8 text-center">
-            <p className="text-slate-600">
-              At least one author of each accepted paper must register at the academic or industry rate.
-              Registration includes publication in the conference proceedings.
+          <div className="mt-12 rounded-2xl border border-slate-200 bg-surface-muted p-8 text-center">
+            <p className="text-slate-600 leading-relaxed">
+              At least one author of each accepted paper must complete registration before the conference.
+              Please contact the organizing committee for any registration inquiries.
             </p>
           </div>
         </div>

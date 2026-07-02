@@ -1,22 +1,14 @@
 import { motion } from 'framer-motion'
-import { ClipboardList, Star, MessageSquare } from 'lucide-react'
+import { AlertTriangle, Shield, EyeOff } from 'lucide-react'
 import { PageHeader } from '../components/ui/PageHeader'
-import { AnimatedSection, StaggerContainer, StaggerItem } from '../components/ui/AnimatedSection'
-
-const reviewCriteria = [
-  { title: 'Originality', desc: 'Novelty and significance of the contribution to the field.' },
-  { title: 'Technical Quality', desc: 'Soundness of methodology, analysis, and experimental validation.' },
-  { title: 'Relevance', desc: 'Alignment with conference tracks and current research trends.' },
-  { title: 'Clarity', desc: 'Quality of writing, organization, and presentation of results.' },
-]
-
-const reviewSteps = [
-  'Each paper is assigned to at least three expert reviewers.',
-  'Reviews are conducted using a double-blind peer review process.',
-  'Reviewers evaluate papers based on standardized criteria.',
-  'Program committee makes final acceptance decisions.',
-  'Authors receive detailed feedback with the notification.',
-]
+import { AnimatedSection } from '../components/ui/AnimatedSection'
+import { SectionTitle } from '../components/ui/SectionTitle'
+import {
+  reviewIntro,
+  plagiarismPolicyIntro,
+  plagiarismSanctions,
+  doubleBlindNote,
+} from '../data/review'
 
 export function PaperReview() {
   return (
@@ -24,63 +16,60 @@ export function PaperReview() {
       <PageHeader
         badge="Review Process"
         title="Paper Review"
-        subtitle="Learn about our rigorous double-blind peer review process."
+        subtitle="Learn about our peer review process, evaluation criteria, and plagiarism policy."
       />
 
-      <AnimatedSection className="py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <StaggerContainer className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {reviewCriteria.map(({ title, desc }) => (
-              <StaggerItem key={title}>
-                <motion.div
-                  whileHover={{ y: -4 }}
-                  className="h-full rounded-2xl border border-slate-100 bg-white p-6 shadow-sm"
-                >
-                  <Star className="mb-3 h-8 w-8 text-primary-500" />
-                  <h3 className="font-display font-semibold text-slate-900">{title}</h3>
-                  <p className="mt-2 text-sm text-slate-600">{desc}</p>
-                </motion.div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+      <AnimatedSection className="bg-surface py-16 md:py-24">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <p className="text-lg leading-relaxed text-slate-600">{reviewIntro}</p>
         </div>
       </AnimatedSection>
 
-      <section className="bg-slate-50 py-16 md:py-24">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-8">
-            <ClipboardList className="h-8 w-8 text-primary-500" />
-            <h2 className="font-display text-2xl font-bold text-slate-900">Review Process Steps</h2>
+      <section className="bg-surface-muted py-16 md:py-24">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-8 flex items-center gap-3">
+            <Shield className="h-8 w-8 text-brand-700" />
+            <h2 className="font-display text-2xl font-bold text-brand-900">Plagiarism Policy</h2>
           </div>
-          <ol className="space-y-4">
-            {reviewSteps.map((step, i) => (
+
+          <p className="text-slate-600 leading-relaxed">{plagiarismPolicyIntro}</p>
+
+          <ol className="mt-6 space-y-3">
+            {plagiarismSanctions.map((sanction, i) => (
               <motion.li
-                key={i}
-                initial={{ opacity: 0, x: -20 }}
+                key={sanction}
+                initial={{ opacity: 0, x: -16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex items-start gap-4 rounded-xl border border-slate-100 bg-white p-4"
+                transition={{ delay: i * 0.08 }}
+                className="card-elevated flex items-start gap-4 rounded-xl p-4"
               >
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary-100 text-sm font-bold text-primary-700">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-50 text-sm font-bold text-red-600">
                   {i + 1}
                 </span>
-                <span className="text-slate-700">{step}</span>
+                <span className="pt-1 text-slate-700 leading-relaxed">{sanction}</span>
               </motion.li>
             ))}
           </ol>
+
+          <div className="mt-8 flex items-start gap-3 rounded-xl border border-amber-200 bg-amber-50 p-5">
+            <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-600" />
+            <p className="text-sm text-amber-900 leading-relaxed">
+              Similarity rate must not exceed <strong>15%</strong>. Self-plagiarism of authors&apos; own published papers is strictly prohibited.
+            </p>
+          </div>
         </div>
       </section>
 
-      <AnimatedSection className="py-16">
-        <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-          <MessageSquare className="mx-auto h-10 w-10 text-primary-500" />
-          <p className="mt-4 text-slate-600">
-            Interested in becoming a reviewer? Contact us at{' '}
-            <a href="mailto:review@syscom2026.org" className="font-medium text-primary-600 hover:underline">
-              review@syscom2026.org
-            </a>
-          </p>
+      <AnimatedSection className="py-16 md:py-24">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <SectionTitle label="Authors" title="Double-Blind Review" align="left" />
+          <div className="card-elevated flex items-start gap-4 rounded-2xl p-8">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-50">
+              <EyeOff className="h-6 w-6 text-brand-700" />
+            </div>
+            <p className="text-slate-600 leading-relaxed">{doubleBlindNote}</p>
+          </div>
         </div>
       </AnimatedSection>
     </>

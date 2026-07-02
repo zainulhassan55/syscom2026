@@ -4,7 +4,8 @@ export const conference = {
   dates: 'December 19–20, 2026',
   location: 'Taichung, Taiwan',
   venue: 'National Taichung University of Science and Technology',
-  email: 'info@syscom2026.org',
+  email: 'syscom2026@cyber-conf.com',
+  submissionEmail: 'syscom2026@cyber-conf.com',
   phone: '+886-4-2219-5678',
 }
 

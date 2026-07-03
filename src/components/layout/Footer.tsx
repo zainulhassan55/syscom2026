@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
-import { Mail, MapPin, Phone } from 'lucide-react'
+import { Mail, MapPin } from 'lucide-react'
 import { conference } from '../../data/conference'
+import { SiteLogo } from '../ui/SiteLogo'
 
 export function Footer() {
   return (
@@ -11,15 +12,9 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
-            <div className="mb-5 flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-linear-to-br from-gold-500 to-gold-400">
-                <span className="font-display text-base font-bold text-brand-950">SC</span>
-              </div>
-              <div>
-                <p className="font-display text-xl font-bold text-white">SysCom 2026</p>
-                <p className="text-xs text-gold-500">Smart Systems & Computing</p>
-              </div>
-            </div>
+            <Link to="/" className="mb-5 inline-block rounded-xl bg-white p-2.5 transition hover:opacity-90">
+              <SiteLogo className="h-12 sm:h-14" />
+            </Link>
             <p className="text-sm leading-relaxed">
               Premier international platform for deliberations on smart systems, advanced computing, and intelligent autonomous technologies.
             </p>
@@ -78,7 +73,11 @@ export function Footer() {
             <ul className="space-y-4 text-sm">
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold-500" />
-                <span>{conference.location}</span>
+                <span>
+                  {conference.venue}
+                  <br />
+                  {conference.location}
+                </span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-4 w-4 shrink-0 text-gold-500" />
@@ -86,17 +85,13 @@ export function Footer() {
                   {conference.email}
                 </a>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone className="h-4 w-4 shrink-0 text-gold-500" />
-                {conference.phone}
-              </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/8 pt-8 text-sm sm:flex-row">
           <p>© 2026 SysCom Conference. All rights reserved.</p>
-          <p className="text-gold-600/70">December 19–20, 2026 · Taichung, Taiwan</p>
+          <p className="text-gold-600/70">December 19–20, 2026 · Asia University, Taichung</p>
         </div>
       </div>
     </footer>

@@ -8,7 +8,7 @@ const HERO_IMAGE =
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen overflow-hidden">
+    <section className="no-justify relative min-h-screen overflow-hidden">
       {/* Background layers */}
       <div className="hero-bg absolute inset-0 scale-105" aria-hidden="true" />
       <div className="hero-overlay absolute inset-0" aria-hidden="true" />
@@ -80,7 +80,7 @@ export function HeroSection() {
             </span>
             <span className="hidden h-8 w-px bg-white/20 sm:block" />
             <span className="hidden text-sm text-slate-400 sm:block">
-              Taichung, Taiwan
+              {conference.venue}, {conference.location}
             </span>
           </motion.div>
 
@@ -102,7 +102,8 @@ export function HeroSection() {
               <MapPin className="h-5 w-5 text-gold-400" />
               <div className="text-left">
                 <p className="text-xs text-slate-400">Venue</p>
-                <p className="text-sm font-semibold text-white">{conference.location}</p>
+                <p className="text-sm font-semibold text-white">{conference.venue}</p>
+                <p className="text-xs text-slate-400">{conference.location}</p>
               </div>
             </div>
           </motion.div>

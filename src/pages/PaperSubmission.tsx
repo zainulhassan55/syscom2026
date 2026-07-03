@@ -19,9 +19,9 @@ export function PaperSubmission() {
 
       <AnimatedSection className="bg-surface py-16 md:py-24">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="space-y-5 text-slate-600 leading-relaxed">
+          <div className="space-y-5 text-slate-600 leading-relaxed content-justify">
             {submissionGuidelines.map((paragraph) => (
-              <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+              <p key={paragraph.slice(0, 40)} className="leading-relaxed">{paragraph}</p>
             ))}
           </div>
         </div>

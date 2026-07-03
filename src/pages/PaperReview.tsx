@@ -47,7 +47,7 @@ export function PaperReview() {
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-50 text-sm font-bold text-red-600">
                   {i + 1}
                 </span>
-                <span className="pt-1 text-slate-700 leading-relaxed">{sanction}</span>
+                <span className="pt-1 text-sm leading-relaxed text-slate-700">{sanction}</span>
               </motion.li>
             ))}
           </ol>

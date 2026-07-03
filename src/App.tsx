@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { routerBasename } from './utils/publicAsset'
 import { Layout } from './components/layout/Layout'
 import { Home } from './pages/Home'
 import { CallForPapers } from './pages/CallForPapers'
@@ -13,7 +14,7 @@ import { Contact } from './pages/Contact'
 
 function App() {
   return (
-    <BrowserRouter basename="/syscom2026">
+    <BrowserRouter basename={routerBasename()}>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />

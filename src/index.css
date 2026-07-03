@@ -57,6 +57,35 @@ body {
   min-height: 100vh;
 }
 
+/* Justified body text across content pages */
+main p.leading-relaxed,
+main .leading-relaxed p,
+main .content-justify p {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+main .text-center p,
+main p.text-center,
+main .no-justify p,
+main p.no-justify,
+header p,
+footer p {
+  text-align: inherit;
+  hyphens: manual;
+}
+
+main .no-justify {
+  text-align: left;
+}
+
+main .text-center,
+main .text-center p {
+  text-align: center;
+  hyphens: manual;
+}
+
 .font-display {
   font-family: var(--font-display);
 }

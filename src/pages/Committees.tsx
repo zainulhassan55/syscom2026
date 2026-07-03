@@ -43,7 +43,7 @@ function MemberListItem({ member, index }: { member: CommitteeMember; index: num
       <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-gold-500" />
       <div>
         <p className="font-medium text-brand-900">{member.name}</p>
-        <p className="mt-0.5 text-sm text-slate-500">{member.affiliation}</p>
+        <p className="mt-0.5 text-sm leading-relaxed text-slate-500">{member.affiliation}</p>
       </div>
     </motion.li>
   )

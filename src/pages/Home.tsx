@@ -5,7 +5,7 @@ import { HeroSection } from '../components/home/HeroSection'
 import { SectionTitle } from '../components/ui/SectionTitle'
 import { AnimatedSection } from '../components/ui/AnimatedSection'
 import { TracksGrid } from '../components/ui/TrackCard'
-import { aimAndScope, bestPaperAward } from '../data/conference'
+import { aimAndScope, bestPaperAward, conference } from '../data/conference'
 
 const stats = [
   { icon: BookOpen, value: '10', label: 'Research Tracks', desc: 'Specialized domains' },
@@ -49,7 +49,7 @@ export function Home() {
                 className="absolute -bottom-6 -right-4 rounded-2xl border border-gold-500/30 bg-white p-5 shadow-xl sm:-right-8"
               >
                 <p className="font-display text-3xl font-bold text-brand-800">Dec 19–20</p>
-                <p className="text-sm text-slate-500">Taichung, Taiwan 2026</p>
+                <p className="text-sm text-slate-500">{conference.venue}, {conference.location}</p>
               </motion.div>
             </div>
 
@@ -60,7 +60,7 @@ export function Home() {
                 description={aimAndScope.intro}
                 align="left"
               />
-              <div className="space-y-4 text-slate-600 leading-relaxed">
+              <div className="space-y-4 text-slate-600 leading-relaxed content-justify">
                 {aimAndScope.paragraphs.slice(0, 3).map((p, i) => (
                   <motion.p
                     key={i}
@@ -68,6 +68,7 @@ export function Home() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
+                    className="leading-relaxed"
                   >
                     {p}
                   </motion.p>
@@ -169,9 +170,9 @@ export function Home() {
         <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
           <span className="section-label center mx-auto">Join Us</span>
           <h2 className="font-display mt-4 text-3xl font-bold text-brand-900 md:text-4xl">
-            Be Part of SysCom 2026 in Taichung
+            Be Part of SysCom 2026 at Asia University
           </h2>
-          <p className="mt-4 text-lg text-slate-600">
+          <p className="mt-4 text-lg leading-relaxed text-slate-600">
             Connect with leading researchers, share your work, and shape the future of smart systems technology.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">

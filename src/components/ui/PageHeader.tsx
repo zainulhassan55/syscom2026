@@ -44,7 +44,7 @@ export function PageHeader({ title, subtitle, badge }: PageHeaderProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-300"
+            className="mt-5 max-w-2xl text-lg leading-relaxed text-slate-300 no-justify"
           >
             {subtitle}
           </motion.p>

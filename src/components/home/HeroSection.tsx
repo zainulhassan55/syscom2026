@@ -156,7 +156,7 @@ export function HeroSection() {
 
               {/* Floating badge on image */}
               <motion.div
-                className="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/15 bg-brand-900/80 p-4 backdrop-blur-md"
+                className="absolute bottom-14 left-6 right-6 rounded-2xl border border-white/15 bg-brand-900/80 p-4 backdrop-blur-md"
                 animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 4, repeat: Infinity }}
               >

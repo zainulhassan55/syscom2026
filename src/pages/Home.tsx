@@ -5,6 +5,7 @@ import { HeroSection } from '../components/home/HeroSection'
 import { SectionTitle } from '../components/ui/SectionTitle'
 import { AnimatedSection } from '../components/ui/AnimatedSection'
 import { TracksGrid } from '../components/ui/TrackCard'
+import { PublicationPartnerSection } from '../components/publication/PublicationPartnerSection'
 import { aimAndScope, bestPaperAward, conference } from '../data/conference'
 
 const stats = [
@@ -188,6 +189,8 @@ export function Home() {
           </div>
         </div>
       </AnimatedSection>
+
+      <PublicationPartnerSection />
     </>
   )
 }

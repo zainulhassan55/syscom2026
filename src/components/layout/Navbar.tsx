@@ -21,6 +21,7 @@ const papersDropdown: DropdownItem[] = [
   { label: 'Paper Submission', path: '/paper-submission' },
   { label: 'Paper Review', path: '/paper-review' },
   { label: 'Paper Registration', path: '/paper-registration' },
+  { label: 'Publication and Indexing', path: '/publication-indexing' },
 ]
 
 const moreDropdown: DropdownItem[] = [

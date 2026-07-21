@@ -3,6 +3,7 @@ import { Calendar, CheckCircle2 } from 'lucide-react'
 import { PageHeader } from '../components/ui/PageHeader'
 import { AnimatedSection } from '../components/ui/AnimatedSection'
 import { SectionTitle } from '../components/ui/SectionTitle'
+import { PublicationIndexingSection } from '../components/publication/PublicationIndexingSection'
 import {
   cfpIntro,
   conferenceTracks,
@@ -110,6 +111,8 @@ export function CallForPapers() {
           </div>
         </div>
       </section>
+
+      <PublicationIndexingSection />
     </>
   )
 }

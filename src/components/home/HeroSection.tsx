@@ -44,7 +44,7 @@ export function HeroSection() {
             transition={{ delay: 0.1, duration: 0.6 }}
             className="font-body text-sm font-semibold uppercase tracking-[0.2em] text-brand-400"
           >
-            3rd International Conference 2026 on
+            3rd International Conference on
           </motion.p>
 
           <motion.h1

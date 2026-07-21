@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Calendar, MapPin, ArrowRight, Microscope } from 'lucide-react'
+import { Calendar, MapPin, ArrowRight } from 'lucide-react'
 import { conference } from '../../data/conference'
 
 const HERO_IMAGE =
@@ -38,25 +38,13 @@ export function HeroSection() {
       <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-4 pt-28 pb-20 sm:px-6 lg:flex-row lg:items-center lg:gap-16 lg:px-8 lg:pt-24">
         {/* Left — Content */}
         <div className="flex-1 text-center lg:text-left">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-gold-500/30 bg-gold-500/10 px-5 py-2"
-          >
-            <Microscope className="h-4 w-4 text-gold-400" />
-            <span className="text-sm font-medium tracking-wide text-gold-300">
-              3rd International Edition · 2026
-            </span>
-          </motion.div>
-
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.6 }}
             className="font-body text-sm font-semibold uppercase tracking-[0.2em] text-brand-400"
           >
-            International Conference on
+            3rd International Conference 2026 on
           </motion.p>
 
           <motion.h1

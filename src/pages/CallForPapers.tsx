@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Calendar, CheckCircle2 } from 'lucide-react'
+import { CheckCircle2 } from 'lucide-react'
 import { PageHeader } from '../components/ui/PageHeader'
 import { AnimatedSection } from '../components/ui/AnimatedSection'
 import { SectionTitle } from '../components/ui/SectionTitle'
@@ -8,7 +8,6 @@ import {
   cfpIntro,
   conferenceTracks,
   conferenceTopics,
-  cfpImportantDates,
 } from '../data/callForPapers'
 
 export function CallForPapers() {
@@ -75,42 +74,6 @@ export function CallForPapers() {
           </ul>
         </div>
       </AnimatedSection>
-
-      {/* Important Dates */}
-      <section className="bg-brand-900 py-16 md:py-24">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <SectionTitle
-            label="Schedule"
-            title="Important Dates"
-            align="left"
-            light
-          />
-          <div className="space-y-3">
-            {cfpImportantDates.map((item, i) => (
-              <motion.div
-                key={item.event}
-                initial={{ opacity: 0, x: -16 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.06 }}
-                className={`flex flex-col gap-1 rounded-xl border px-5 py-4 sm:flex-row sm:items-center sm:justify-between ${
-                  item.highlight
-                    ? 'border-gold-500/40 bg-gold-500/10'
-                    : 'border-white/10 bg-white/5'
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <Calendar className="h-5 w-5 shrink-0 text-gold-400" />
-                  <span className="font-medium text-white">{item.event}</span>
-                </div>
-                <span className={`font-semibold sm:text-right text-white ${item.highlight ? 'text-gold-400' : 'text-brand-200'}`}>
-                  {item.date}
-                </span>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <PublicationIndexingSection />
     </>

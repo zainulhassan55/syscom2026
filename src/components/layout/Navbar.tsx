@@ -19,9 +19,9 @@ const mainLinks = [
 
 const papersDropdown: DropdownItem[] = [
   { label: 'Paper Submission', path: '/paper-submission' },
+  { label: 'Publication and Indexing', path: '/publication-indexing' },
   { label: 'Paper Review', path: '/paper-review' },
   { label: 'Paper Registration', path: '/paper-registration' },
-  { label: 'Publication and Indexing', path: '/publication-indexing' },
 ]
 
 const moreDropdown: DropdownItem[] = [

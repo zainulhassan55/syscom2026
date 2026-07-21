@@ -190,6 +190,17 @@ main .text-center p {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.scroll-to-top {
+  background: linear-gradient(135deg, #a96e08 0%, #d8a51d 52%, #f4c54b 100%);
+  color: #0a1628;
+  box-shadow: 0 4px 20px rgba(212, 160, 23, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scroll-to-top:hover {
+  box-shadow: 0 8px 28px rgba(212, 160, 23, 0.5);
+}
+
 .btn-gold:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 28px rgba(212, 160, 23, 0.45);

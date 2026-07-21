@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion'
 import { Navbar } from './Navbar'
 import { Footer } from './Footer'
 import { PageTransition } from '../ui/AnimatedSection'
+import { ScrollToTop } from '../ui/ScrollToTop'
 
 export function Layout() {
   const location = useLocation()
@@ -18,6 +19,7 @@ export function Layout() {
         </AnimatePresence>
       </main>
       <Footer />
+      <ScrollToTop />
     </div>
   )
 }
